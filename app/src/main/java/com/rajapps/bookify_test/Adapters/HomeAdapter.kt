@@ -35,6 +35,8 @@ class HomeAdapter(val list: ArrayList<HomeModel>, val context: Context) :
                         val intent = Intent()
                         intent.putExtra("book_list",booksList)
                         intent.setClass(context,CategoryActivity::class.java)
+                        //1
+                       intent.putExtra("toolbar_tilte",catTitle)
                         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                             context as Activity,
                             mChildRvBooks,

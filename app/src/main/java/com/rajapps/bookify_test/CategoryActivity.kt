@@ -22,6 +22,10 @@ class CategoryActivity : AppCompatActivity() {
             mRvCategory.adapter = adapter
             SpringScrollHelper().attachToRecyclerView(mRvCategory)
             val bookList = intent.getSerializableExtra("book_list") as ArrayList<BooksModel>
+            //2
+            val   catTitle = intent.getSerializableExtra("toolbar_tilte")as String
+            supportActionBar?.title = catTitle
+
             bookList.forEach {
                 list.add(it)
             }

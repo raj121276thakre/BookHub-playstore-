@@ -45,6 +45,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+       // supportActionBar?.title= ""
+
     }
 
     private fun handleHomeBackend() {
