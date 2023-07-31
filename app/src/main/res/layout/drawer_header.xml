@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="240dp"
-android:background="@color/purple_500"
+android:background="@drawable/bg_color"
     android:orientation="vertical"
     >
     <!--navigation drawer step -2-->

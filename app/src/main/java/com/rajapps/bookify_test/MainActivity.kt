@@ -1,5 +1,6 @@
 package com.rajapps.bookify_test
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -82,10 +83,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                R.id.shareApp ->{
+                R.id.ReferApp ->{
 
                     //code
-                    supportActionBar?.title="Share App"
+                    val intent = Intent(this,ReferAppActivity::class.java)
+                    startActivity(intent)
+                    //supportActionBar?.title="Refer and Earn"
                     drawerLayout.closeDrawers()
                 }
 
