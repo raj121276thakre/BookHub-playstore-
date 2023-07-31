@@ -15,4 +15,5 @@
 
     <color name="yellow">#DDA411</color>
     <color name="gray_text">#716969</color>
+    <color name="bg_color">#5A11DA</color>
 </resources>

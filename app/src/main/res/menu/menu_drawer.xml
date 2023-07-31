@@ -7,9 +7,10 @@
 
 
     <item
-        android:id="@+id/shareApp"
-        android:title="Share App"
-        android:icon="@drawable/ic_share_app"
+        android:id="@+id/ReferApp"
+        android:title="Refer and earn"
+
+        android:icon="@drawable/ic_refer_earn"
         />
 
 
