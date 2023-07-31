@@ -80,30 +80,44 @@ class MainActivity : AppCompatActivity() {
 
             when(it.itemId){
 
-                R.id.dashboard -> {
 
 
+                R.id.shareApp ->{
+
+                    //code
+                    supportActionBar?.title="Share App"
                     drawerLayout.closeDrawers()
                 }
 
-                R.id.favourites ->{
 
 
-                    supportActionBar?.title="Favourites"
-                    drawerLayout.closeDrawers()
-                }
-
-                R.id.profile ->{
-
-                    supportActionBar?.title="Profile"
-                    drawerLayout.closeDrawers()
-                }
-
-                R.id.about ->{
-
-                    supportActionBar?.title="About App"
-                    drawerLayout.closeDrawers()
-                }
+//                R.id.rateUs ->{
+//
+//                    //code
+//                    supportActionBar?.title="Rate Us"
+//                    drawerLayout.closeDrawers()
+//                }
+//
+//                R.id.terms ->{
+//
+//                    //code
+//                    supportActionBar?.title="Terms Conditions"
+//                    drawerLayout.closeDrawers()
+//                }
+//
+//                R.id.privacy ->{
+//
+//                    //code
+//                    supportActionBar?.title="Privacy Policy"
+//                    drawerLayout.closeDrawers()
+//                }
+//
+//                R.id.developer ->{
+//
+//                    //code
+//                    supportActionBar?.title="Developer"
+//                    drawerLayout.closeDrawers()
+//                }
 
             }
 
@@ -181,6 +195,8 @@ class MainActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
+
 
     //navigation
 }

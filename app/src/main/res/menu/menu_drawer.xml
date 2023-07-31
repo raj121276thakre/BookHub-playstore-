@@ -5,30 +5,46 @@
     <group android:checkableBehavior="single" >
 
 
-    <item
-        android:id="@+id/dashboard"
-        android:title="dashboard"
-        android:icon="@drawable/ic_dashboard"
-        />
 
     <item
-        android:id="@+id/favourites"
-        android:title="favourites"
-        android:icon="@drawable/ic_favorite"
+        android:id="@+id/shareApp"
+        android:title="Share App"
+        android:icon="@drawable/ic_share_app"
         />
 
-    <item
-        android:id="@+id/profile"
-        android:title="profile"
-        android:icon="@drawable/ic_profile"
-        />
 
-    <item
-        android:id="@+id/about"
-        android:title="about"
-        android:icon="@drawable/ic_about"
-        />
 
     </group>
 
 </menu>
+
+<!--<item
+        android:id="@+id/rateUs"
+        android:title="Rate Us"
+        android:icon="@drawable/ic_rate_us"
+        />
+
+
+   <item
+        android:id="@+id/terms"
+        android:title="Terms Conditions"
+        android:icon="@drawable/ic_terms"
+        />
+
+    <item
+        android:id="@+id/privacy"
+        android:title="Privacy Policy"
+        android:icon="@drawable/ic_privacy"
+        />
+
+   <item
+       android:id="@+id/developer"
+       android:title="Developer"
+       android:icon="@drawable/ic_developer"
+       />
+
+
+
+
+
+        -->

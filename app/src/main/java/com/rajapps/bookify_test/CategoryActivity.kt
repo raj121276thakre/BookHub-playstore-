@@ -2,6 +2,9 @@ package com.rajapps.bookify_test
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.drawerlayout.widget.DrawerLayout
 import com.rajapps.bookify_test.Adapters.CategoryAdapter
 import com.rajapps.bookify_test.Models.BooksModel
 import com.rajapps.bookify_test.Utils.SpringScrollHelper
@@ -15,22 +18,52 @@ class CategoryActivity : AppCompatActivity() {
 
     private val list = ArrayList<BooksModel>()
     private val adapter = CategoryAdapter(list, activity)
+
+    //toolbar category
+
+    lateinit var coordinatorLayout : CoordinatorLayout
+    lateinit var toolbar : Toolbar
+    //toolbar category
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+
+        // toolbar category
+
+        coordinatorLayout = findViewById(R.id.coordinatorLayout)
+        toolbar = findViewById(R.id.toolbar)
+
+
+        // toolbar category
+
         binding.apply {
             mRvCategory.adapter = adapter
             SpringScrollHelper().attachToRecyclerView(mRvCategory)
             val bookList = intent.getSerializableExtra("book_list") as ArrayList<BooksModel>
             //2
-            val   catTitle = intent.getSerializableExtra("toolbar_tilte")as String
-            supportActionBar?.title = catTitle
+            val   catTitle = intent.getStringExtra("toolbar_tilte")as String
+            //supportActionBar?.title = catTitle
+            setUpToolbar(catTitle)
 
             bookList.forEach {
                 list.add(it)
             }
         }
+
+
+
+    }// functions below
+
+    //toolbar
+    fun setUpToolbar( Title : String){
+        setSupportActionBar(toolbar)
+        supportActionBar?.title=Title
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
+    //toolbar
 
     override fun onBackPressed() {
         finish()
