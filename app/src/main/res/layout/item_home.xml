@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Self Developments"
-        android:textColor="#665430"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         android:fontFamily="@font/roboto_bold"

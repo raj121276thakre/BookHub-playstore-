@@ -1,4 +1,4 @@
-package com.rajapps.bookify_test
+package com.rajapps.bookify_test.Activity
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity

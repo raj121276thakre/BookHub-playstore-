@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:backgroundTint="@color/black"
+                android:backgroundTint="@color/bg_color"
                 android:paddingEnd="12dp"
                 android:text="read book"
                 app:icon="@drawable/right_arrow"

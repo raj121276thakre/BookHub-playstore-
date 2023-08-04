@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.rajapps.bookify_test.DetailsActivity
+import com.rajapps.bookify_test.Activity.DetailsActivity
 import com.rajapps.bookify_test.Models.BooksModel
 import com.rajapps.bookify_test.Utils.loadOnline
 import com.rajapps.bookify_test.databinding.ItemBookBinding

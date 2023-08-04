@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:scrollbars="none"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".Activity.DetailsActivity">
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -21,9 +22,9 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        android:layout_width="145dp"
+        android:layout_width="150dp"
         android:transitionName="BookTrans"
-        android:layout_height="0dp"
+        android:layout_height="250dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="50dp"
@@ -62,6 +63,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
@@ -93,26 +95,7 @@
         app:layout_constraintStart_toEndOf="@+id/materialCardView"
         app:layout_constraintTop_toBottomOf="@+id/mBookTitle" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mPlayAudio"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="8dp"
-        app:cardBackgroundColor="@color/bg_color"
-        app:cardCornerRadius="100dp"
-        app:contentPadding="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:strokeWidth="0dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_headphone"
-            app:tint="@color/white" />
-    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/textView7"
@@ -121,13 +104,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ellipsize="end"
-
         android:maxLines="1"
         android:text="Book Description"
         android:textColor="@color/bg_color"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/mPlayAudio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -183,6 +164,11 @@
         app:layout_constraintStart_toStartOf="@+id/mBookTitle"
         app:layout_constraintTop_toBottomOf="@+id/mAuthorName"
         app:strokeColor="@color/black" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </androidx.core.widget.NestedScrollView>

@@ -1,12 +1,12 @@
-package com.rajapps.bookify_test
+package com.rajapps.bookify_test.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.drawerlayout.widget.DrawerLayout
 import com.rajapps.bookify_test.Adapters.CategoryAdapter
 import com.rajapps.bookify_test.Models.BooksModel
+import com.rajapps.bookify_test.R
 import com.rajapps.bookify_test.Utils.SpringScrollHelper
 import com.rajapps.bookify_test.databinding.ActivityCategoryBinding
 

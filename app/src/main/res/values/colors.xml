@@ -16,4 +16,8 @@
     <color name="yellow">#DDA411</color>
     <color name="gray_text">#716969</color>
     <color name="bg_color">#5A11DA</color>
+
+    <color name="colorFavourite">#311b92</color>
+
+
 </resources>

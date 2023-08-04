@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.rajapps.bookify_test.CategoryActivity
-import com.rajapps.bookify_test.DetailsActivity
+import com.rajapps.bookify_test.Activity.CategoryActivity
+import com.rajapps.bookify_test.Activity.DetailsActivity
 import com.rajapps.bookify_test.Models.BooksModel
 import com.rajapps.bookify_test.Models.HomeModel
 import com.rajapps.bookify_test.Utils.SpringScrollHelper
@@ -34,7 +34,7 @@ class HomeAdapter(val list: ArrayList<HomeModel>, val context: Context) :
                         // handle here
                         val intent = Intent()
                         intent.putExtra("book_list",booksList)
-                        intent.setClass(context,CategoryActivity::class.java)
+                        intent.setClass(context, CategoryActivity::class.java)
                         //1
                        intent.putExtra("toolbar_tilte",catTitle)
                         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(

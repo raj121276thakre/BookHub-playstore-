@@ -1,4 +1,4 @@
-package com.rajapps.bookify_test
+package com.rajapps.bookify_test.Activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,15 +6,21 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.navigation.NavigationView
 import com.rajapps.bookify_test.Adapters.HomeAdapter
 import com.rajapps.bookify_test.Models.HomeModel
+import com.rajapps.bookify_test.R
 import com.rajapps.bookify_test.Repository.MainRepo
 import com.rajapps.bookify_test.Utils.MyResponses
 import com.rajapps.bookify_test.Utils.SpringScrollHelper
@@ -46,6 +52,8 @@ class MainActivity : AppCompatActivity() {
     var previousMenuItem : MenuItem? = null
     // navigation
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -60,6 +68,8 @@ class MainActivity : AppCompatActivity() {
 
         setUpToolbar()
 
+
+
         val actionBarDrawerToggle = ActionBarDrawerToggle(this,drawerLayout,
             R.string.open_drawer,
             R.string.close_drawer
@@ -67,6 +77,10 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+
+
+
+
 
 
         navigationview.setNavigationItemSelectedListener {
@@ -83,12 +97,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                R.id.favouriteBooks ->{
+                R.id.ReferApp ->{
 
                     //code
-//                    val intent = Intent(this,CourseActivity::class.java)
+                    Toast.makeText(this,"Not implemented yet!",Toast.LENGTH_LONG).show()
+//                    val intent = Intent(this,FavouriteBooksActivity::class.java)
 //                    startActivity(intent)
-                    //supportActionBar?.title="Refer and Earn"
+//                    supportActionBar?.title="Your Favourite Books"
                     drawerLayout.closeDrawers()
                 }
 
@@ -131,6 +146,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.apply {
+
             mRvHome.adapter = adapter
             SpringScrollHelper().attachToRecyclerView(mRvHome)
             viewModel.getHomeData()
@@ -142,7 +158,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-       // supportActionBar?.title= ""
 
     }// functions defined below
 
@@ -199,9 +214,11 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
-
     //navigation
+
+
+
+
 }
 
 

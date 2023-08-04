@@ -18,6 +18,7 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
 
-    <string name="total_referals">Refer app to your 5 friends , and Earn a free Android
-        \nDevelopment course videos download link.</string>
+    <string name="admob_appID">ca-app-pub-3940256099942544~3347511713</string>
+
+
 </resources>
