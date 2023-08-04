@@ -71,7 +71,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:text="Kristen Meinzer"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/bg_color"
         android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/mBookTitle"

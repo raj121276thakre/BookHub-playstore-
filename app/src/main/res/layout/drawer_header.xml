@@ -53,7 +53,7 @@ android:background="@drawable/bg_color"
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Engineer's eLibrary"
+        android:text="Online eLibrary"
         android:textColor="@color/gray"
         android:textStyle="italic"
         android:textSize="20sp"

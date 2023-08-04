@@ -83,11 +83,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
-                R.id.ReferApp ->{
+                R.id.favouriteBooks ->{
 
                     //code
-                    val intent = Intent(this,ReferAppActivity::class.java)
-                    startActivity(intent)
+//                    val intent = Intent(this,CourseActivity::class.java)
+//                    startActivity(intent)
                     //supportActionBar?.title="Refer and Earn"
                     drawerLayout.closeDrawers()
                 }

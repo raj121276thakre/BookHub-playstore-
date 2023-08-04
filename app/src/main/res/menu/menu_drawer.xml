@@ -7,10 +7,9 @@
 
 
     <item
-        android:id="@+id/ReferApp"
-        android:title="Refer and earn"
-
-        android:icon="@drawable/ic_refer_earn"
+        android:id="@+id/favouriteBooks"
+        android:title="Your favourite Books"
+        android:icon="@drawable/ic_favourite"
         />
 
 
