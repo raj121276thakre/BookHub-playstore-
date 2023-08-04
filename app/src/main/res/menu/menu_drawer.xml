@@ -12,7 +12,11 @@
         android:icon="@drawable/ic_share_app"
         />
 
-
+        <item
+            android:id="@+id/rateUs"
+            android:title="Rate Us"
+            android:icon="@drawable/ic_rate_us"
+            />
 
     </group>
 

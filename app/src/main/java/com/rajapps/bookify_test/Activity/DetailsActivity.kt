@@ -35,7 +35,8 @@ class DetailsActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailsBinding
 
     private var mInterstitialAd: InterstitialAd? = null // interstetial ad
-    private val adDisplayInterval: Long =  4 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
+    private var adUnitId = "ca-app-pub-3940256099942544/1033173712" // interstetial ad unit id
+    private val adDisplayInterval: Long =   4 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
 
     private val repo = BookRepo(activity)
     private val viewModel by lazy {
@@ -153,7 +154,7 @@ class DetailsActivity : AppCompatActivity() {
 
         // interstetial ads ca-app-pub-3940256099942544/1033173712
         var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,adUnitId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
 
                 mInterstitialAd = null

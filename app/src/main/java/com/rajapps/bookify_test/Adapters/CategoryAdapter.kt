@@ -19,24 +19,24 @@ class CategoryAdapter(val list: ArrayList<BooksModel>, val context: Context) :
     class CategoryViewHolder(val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(model: BooksModel, context: Context) {
-        binding.apply {
-            mBookImage.loadOnline(model.image)
-            mBookTitle.text = model.title
-            mAuthorName.text = model.author
-            mBookDesc.text = model.description
-            binding.root.setOnClickListener {
-                Intent().apply {
-                    putExtra("book_model",model)
-                    setClass(context, DetailsActivity::class.java)
-                    val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                        context as Activity,
-                        materialCardView,
-                        materialCardView.transitionName
-                    )
-                    context.startActivity(this,options.toBundle())
+            binding.apply {
+                mBookImage.loadOnline(model.image)
+                mBookTitle.text = model.title
+                mAuthorName.text = model.author
+                mBookDesc.text = model.description
+                binding.root.setOnClickListener {
+                    Intent().apply {
+                        putExtra("book_model",model)
+                        setClass(context, DetailsActivity::class.java)
+                        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                            context as Activity,
+                            materialCardView,
+                            materialCardView.transitionName
+                        )
+                        context.startActivity(this,options.toBundle())
+                    }
                 }
             }
-        }
         }
     }
 

@@ -1,6 +1,8 @@
 package com.rajapps.bookify_test.Activity
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private var mInterstitialAd: InterstitialAd? = null // interstetial ad
+    private var adUnitId = "ca-app-pub-3940256099942544/1033173712" // interstetial ad unit id
     private val adDisplayInterval: Long =  3 * 60 * 1000 //  minutes in milliseconds Long = 1 * 60 * 1000
 
 
@@ -113,21 +116,37 @@ class MainActivity : AppCompatActivity() {
                 R.id.ReferApp ->{
 
                     //code
-                    Toast.makeText(this,"Not implemented yet!",Toast.LENGTH_LONG).show()
-//                    val intent = Intent(this,FavouriteBooksActivity::class.java)
-//                    startActivity(intent)
-//                    supportActionBar?.title="Your Favourite Books"
+//
+//                    val appPackageName = packageName // Get your app's package name
+//                    val playStoreLink = "https://play.google.com/store/apps/details?id=$appPackageName"
+
+                    val playStoreLink = "https://play.google.com/store/apps/dev?id=7691527306445378965"
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this awesome app!")
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, playStoreLink)
+                    startActivity(Intent.createChooser(shareIntent, "Refer the App using:"))
+
+
+
                     drawerLayout.closeDrawers()
                 }
 
 
 
-//                R.id.rateUs ->{
-//
-//                    //code
-//                    supportActionBar?.title="Rate Us"
-//                    drawerLayout.closeDrawers()
-//                }
+                R.id.rateUs ->{
+
+                   // val appPackageName = packageName // Get your app's package name
+                  val appPackageName = "com.rajapps.wallpaper" // Get your app's package name
+                    try {
+                        // Open the Play Store page of your app
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+                    } catch (e: ActivityNotFoundException) {
+                        // If the Play Store app is not installed, open the Play Store website
+                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
+                    }
+                    drawerLayout.closeDrawers()
+                }
 //
 //                R.id.terms ->{
 //
@@ -198,7 +217,7 @@ class MainActivity : AppCompatActivity() {
 
         // interstetial ads ca-app-pub-3940256099942544/1033173712
         var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,adUnitId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
 
                 mInterstitialAd = null
