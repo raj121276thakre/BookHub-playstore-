@@ -31,6 +31,8 @@ import com.rajapps.bookify_test.ViewModels.MainViewModelFactory
 
 
 import com.rajapps.bookify_test.databinding.ActivityMainBinding
+import java.util.Timer
+import java.util.TimerTask
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -42,6 +44,11 @@ class MainActivity : AppCompatActivity() {
     private val viewModel by lazy {
         ViewModelProvider(activity, MainViewModelFactory(repo))[MainViewModel::class.java]
     }
+
+
+    private var mInterstitialAd: InterstitialAd? = null // interstetial ad
+    private val adDisplayInterval: Long =  3 * 60 * 1000 //  minutes in milliseconds Long = 1 * 60 * 1000
+
 
     // navigation
     lateinit var drawerLayout : DrawerLayout
@@ -58,6 +65,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        loadInterstitialAd() // interstetial ad
+        showAdTime() //show ad in every   minutes
+
+
 
 // navigation
         drawerLayout = findViewById(R.id.drawerLayout)
@@ -159,7 +172,44 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    }// functions defined below
+    }// functions defined below............................
+
+
+    private fun showAdTime(){
+        val timer = Timer()
+        val adDisplayTask = object : TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd?.show(activity)
+                    } else {
+                        // The interstitial ad was not loaded yet, you may want to handle this case.
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.")
+                    }
+                    loadInterstitialAd() // Load a new ad for the next display
+                }
+            }
+        }
+
+        timer.schedule(adDisplayTask, adDisplayInterval, adDisplayInterval)
+    }
+
+    private fun loadInterstitialAd() {
+
+        // interstetial ads ca-app-pub-3940256099942544/1033173712
+        var adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+
+                mInterstitialAd = null
+            }
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+
+                mInterstitialAd = interstitialAd
+            }
+        }) // interstetial ad //
+
+    }
 
     private fun handleHomeBackend() {
         viewModel.homeLiveData.observe(activity) {

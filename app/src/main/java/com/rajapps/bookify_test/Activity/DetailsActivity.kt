@@ -27,12 +27,15 @@ import com.rajapps.bookify_test.ViewModels.BookViewModelFactory
 
 import com.rajapps.bookify_test.databinding.ActivityDetailsBinding
 import com.rajapps.bookify_test.databinding.LayoutProgressBinding
+import java.util.Timer
+import java.util.TimerTask
 
 class DetailsActivity : AppCompatActivity() {
     val activity = this
     lateinit var binding: ActivityDetailsBinding
 
     private var mInterstitialAd: InterstitialAd? = null // interstetial ad
+    private val adDisplayInterval: Long =  4 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
 
     private val repo = BookRepo(activity)
     private val viewModel by lazy {
@@ -49,19 +52,8 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        // interstetial ads ca-app-pub-3940256099942544/1033173712
-        var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-
-                mInterstitialAd = null
-            }
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-
-                mInterstitialAd = interstitialAd
-            }
-        }) // interstetial ad //
-
+        loadInterstitialAd() // interstetial ad
+        showAdTime() //show ad in every   minutes
 
 
 
@@ -78,7 +70,7 @@ class DetailsActivity : AppCompatActivity() {
             // read button
             mReadBookBtn.setOnClickListener {
 
-                loadinter() // interstetial ads load
+                //loadinter() // interstetial ads load
                 viewModel.downloadFile(bookModel.bookPDF, "${bookModel.title}.pdf")
 
             }
@@ -131,18 +123,49 @@ class DetailsActivity : AppCompatActivity() {
 
         }
 
-    } // functions
+
+    } // functions,,,,,,,,,,,,,,,,,,,,,,,,,
 
 
-    //ads interstetial
-    private fun loadinter(){
 
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(this)
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.")
+
+
+    private fun showAdTime(){
+        val timer = Timer()
+        val adDisplayTask = object : TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd?.show(activity)
+                    } else {
+                        // The interstitial ad was not loaded yet, you may want to handle this case.
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.")
+                    }
+                    loadInterstitialAd() // Load a new ad for the next display
+                }
+            }
         }
+
+        timer.schedule(adDisplayTask, adDisplayInterval, adDisplayInterval)
     }
 
+    private fun loadInterstitialAd() {
+
+        // interstetial ads ca-app-pub-3940256099942544/1033173712
+        var adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+
+                mInterstitialAd = null
+            }
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+
+                mInterstitialAd = interstitialAd
+            }
+        }) // interstetial ad //
+
+    }
 
 }
+
+
