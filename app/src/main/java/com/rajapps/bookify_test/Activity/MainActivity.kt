@@ -1,15 +1,17 @@
 package com.rajapps.bookify_test.Activity
 
+
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.GravityCompat
@@ -30,11 +32,10 @@ import com.rajapps.bookify_test.Utils.removeWithAnim
 import com.rajapps.bookify_test.Utils.showWithAnim
 import com.rajapps.bookify_test.ViewModels.MainViewModel
 import com.rajapps.bookify_test.ViewModels.MainViewModelFactory
-
-
 import com.rajapps.bookify_test.databinding.ActivityMainBinding
 import java.util.Timer
 import java.util.TimerTask
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -49,19 +50,19 @@ class MainActivity : AppCompatActivity() {
 
 
     private var mInterstitialAd: InterstitialAd? = null // interstetial ad
-    private var adUnitId = "ca-app-pub-3940256099942544/1033173712" // interstetial ad unit id
-    private val adDisplayInterval: Long =  3 * 60 * 1000 //  minutes in milliseconds Long = 1 * 60 * 1000
+    private var adUnitId = "ca-app-pub-5815431236783085/2647122985" // interstetial ad unit id
+    private val adDisplayInterval: Long =
+        5 * 60 * 1000 //  minutes in milliseconds Long = 1 * 60 * 1000
 
 
     // navigation
-    lateinit var drawerLayout : DrawerLayout
-    lateinit var coordinatorLayout : CoordinatorLayout
-    lateinit var toolbar : Toolbar
-    lateinit var framelayout : FrameLayout
-    lateinit var navigationview : NavigationView
-    var previousMenuItem : MenuItem? = null
+    lateinit var drawerLayout: DrawerLayout
+    lateinit var coordinatorLayout: CoordinatorLayout
+    lateinit var toolbar: Toolbar
+    lateinit var framelayout: FrameLayout
+    lateinit var navigationview: NavigationView
+    var previousMenuItem: MenuItem? = null
     // navigation
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         showAdTime() //show ad in every   minutes
 
 
-
 // navigation
         drawerLayout = findViewById(R.id.drawerLayout)
         coordinatorLayout = findViewById(R.id.coordinatorLayout)
@@ -85,8 +85,8 @@ class MainActivity : AppCompatActivity() {
         setUpToolbar()
 
 
-
-        val actionBarDrawerToggle = ActionBarDrawerToggle(this,drawerLayout,
+        val actionBarDrawerToggle = ActionBarDrawerToggle(
+            this, drawerLayout,
             R.string.open_drawer,
             R.string.close_drawer
         )
@@ -101,26 +101,21 @@ class MainActivity : AppCompatActivity() {
 
         navigationview.setNavigationItemSelectedListener {
 
-            if (previousMenuItem != null){
-                previousMenuItem?.isChecked =false
+            if (previousMenuItem != null) {
+                previousMenuItem?.isChecked = false
             }
 
             it.isCheckable = true
             it.isChecked = true
             previousMenuItem = it
 
-            when(it.itemId){
+            when (it.itemId) {
 
-
-
-                R.id.ReferApp ->{
-
+                R.id.ReferApp -> {
                     //code
-//
-//                    val appPackageName = packageName // Get your app's package name
-//                    val playStoreLink = "https://play.google.com/store/apps/details?id=$appPackageName"
 
-                    val playStoreLink = "https://play.google.com/store/apps/dev?id=7691527306445378965"
+                    val appPackageName = packageName // Get your app's package name
+                    val playStoreLink = "https://play.google.com/store/apps/details?id=$appPackageName"
                     val shareIntent = Intent(Intent.ACTION_SEND)
                     shareIntent.type = "text/plain"
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this awesome app!")
@@ -128,22 +123,30 @@ class MainActivity : AppCompatActivity() {
                     startActivity(Intent.createChooser(shareIntent, "Refer the App using:"))
 
 
-
                     drawerLayout.closeDrawers()
                 }
 
 
+                R.id.rateUs -> {
 
-                R.id.rateUs ->{
+                     val appPackageName = packageName // Get your app's package name
 
-                   // val appPackageName = packageName // Get your app's package name
-                  val appPackageName = "com.rajapps.wallpaper" // Get your app's package name
                     try {
                         // Open the Play Store page of your app
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("market://details?id=$appPackageName")
+                            )
+                        )
                     } catch (e: ActivityNotFoundException) {
                         // If the Play Store app is not installed, open the Play Store website
-                        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                            )
+                        )
                     }
                     drawerLayout.closeDrawers()
                 }
@@ -194,7 +197,7 @@ class MainActivity : AppCompatActivity() {
     }// functions defined below............................
 
 
-    private fun showAdTime(){
+    private fun showAdTime() {
         val timer = Timer()
         val adDisplayTask = object : TimerTask() {
             override fun run() {
@@ -217,11 +220,12 @@ class MainActivity : AppCompatActivity() {
 
         // interstetial ads ca-app-pub-3940256099942544/1033173712
         var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,adUnitId, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
 
                 mInterstitialAd = null
             }
+
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
 
                 mInterstitialAd = interstitialAd
@@ -264,9 +268,9 @@ class MainActivity : AppCompatActivity() {
 
 
     //navigation
-    fun setUpToolbar(){
+    fun setUpToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar?.title="BookHub"
+        supportActionBar?.title = "BookHub"
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -276,7 +280,7 @@ class MainActivity : AppCompatActivity() {
 
         val id = item.itemId
 
-        if (id == android.R.id.home){
+        if (id == android.R.id.home) {
             drawerLayout.openDrawer(GravityCompat.START)
         }
 
@@ -284,8 +288,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     //navigation
-
-
 
 
 }

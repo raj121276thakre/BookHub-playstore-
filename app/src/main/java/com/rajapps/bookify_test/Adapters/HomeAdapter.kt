@@ -33,16 +33,16 @@ class HomeAdapter(val list: ArrayList<HomeModel>, val context: Context) :
                     mSeeAllBtn.setOnClickListener {
                         // handle here
                         val intent = Intent()
-                        intent.putExtra("book_list",booksList)
+                        intent.putExtra("book_list", booksList)
                         intent.setClass(context, CategoryActivity::class.java)
                         //1
-                       intent.putExtra("toolbar_tilte",catTitle)
+                        intent.putExtra("toolbar_tilte", catTitle)
                         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                             context as Activity,
                             mChildRvBooks,
                             mChildRvBooks.transitionName
                         )
-                        context.startActivity(intent,options.toBundle())
+                        context.startActivity(intent, options.toBundle())
                     }
                     if (booksList != null) {
                         mChildRvBooks.setupChildRv(booksList, context)
@@ -69,14 +69,14 @@ class HomeAdapter(val list: ArrayList<HomeModel>, val context: Context) :
                     mReadBookBtn.setOnClickListener {
                         //
                         Intent().apply {
-                            putExtra("book_model",model.bod)
+                            putExtra("book_model", model.bod)
                             setClass(context, DetailsActivity::class.java)
                             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                                 context as Activity,
                                 cardView,
                                 cardView.transitionName
                             )
-                            context.startActivity(this,options.toBundle())
+                            context.startActivity(this, options.toBundle())
                         }
                     }
                 }

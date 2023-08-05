@@ -1,54 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-<!--navigation drawer step -1-->
-    <group android:checkableBehavior="single" >
+    <!--navigation drawer step -1-->
+    <group android:checkableBehavior="single">
 
 
+        <item
+            android:id="@+id/ReferApp"
+            android:icon="@drawable/ic_share_app"
+            android:title="Refer App"
 
-    <item
-        android:id="@+id/ReferApp"
-        android:title="Refer App"
-        android:icon="@drawable/ic_share_app"
-        />
+            />
 
         <item
             android:id="@+id/rateUs"
-            android:title="Rate Us"
             android:icon="@drawable/ic_rate_us"
+            android:title="Rate Us"
+
             />
 
     </group>
 
 </menu>
 
-<!--<item
-        android:id="@+id/rateUs"
-        android:title="Rate Us"
-        android:icon="@drawable/ic_rate_us"
-        />
+    <!--<item
+            android:id="@+id/rateUs"
+            android:title="Rate Us"
+            android:icon="@drawable/ic_rate_us"
+            />
 
 
-   <item
-        android:id="@+id/terms"
-        android:title="Terms Conditions"
-        android:icon="@drawable/ic_terms"
-        />
+       <item
+            android:id="@+id/terms"
+            android:title="Terms Conditions"
+            android:icon="@drawable/ic_terms"
+            />
 
-    <item
-        android:id="@+id/privacy"
-        android:title="Privacy Policy"
-        android:icon="@drawable/ic_privacy"
-        />
+        <item
+            android:id="@+id/privacy"
+            android:title="Privacy Policy"
+            android:icon="@drawable/ic_privacy"
+            />
 
-   <item
-       android:id="@+id/developer"
-       android:title="Developer"
-       android:icon="@drawable/ic_developer"
-       />
-
-
+       <item
+           android:id="@+id/developer"
+           android:title="Developer"
+           android:icon="@drawable/ic_developer"
+           />
 
 
 
-        -->
+
+
+            -->

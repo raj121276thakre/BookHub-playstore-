@@ -17,8 +17,9 @@ class PdfActivity : AppCompatActivity() {
     val activity = this
 
     private var mInterstitialAd: InterstitialAd? = null // interstetial ad
-    private var adUnitId = "ca-app-pub-3940256099942544/1033173712" // interstetial ad unit id
-    private val adDisplayInterval: Long =  4 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
+    private var adUnitId = "ca-app-pub-5815431236783085/8163490774" // interstetial ad unit id
+    private val adDisplayInterval: Long =
+        10 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
 
 
     lateinit var binding: ActivityPdfBinding
@@ -50,9 +51,7 @@ class PdfActivity : AppCompatActivity() {
     }
 
 
-
-
-    private fun showAdTime(){
+    private fun showAdTime() {
         val timer = Timer()
         val adDisplayTask = object : TimerTask() {
             override fun run() {
@@ -75,11 +74,12 @@ class PdfActivity : AppCompatActivity() {
 
         // interstetial ads ca-app-pub-3940256099942544/1033173712
         var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,adUnitId, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
 
                 mInterstitialAd = null
             }
+
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
 
                 mInterstitialAd = interstitialAd
@@ -87,8 +87,6 @@ class PdfActivity : AppCompatActivity() {
         }) // interstetial ad //
 
     }
-
-
 
 
 }

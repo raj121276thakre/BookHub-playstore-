@@ -5,19 +5,10 @@ import androidx.dynamicanimation.animation.SpringAnimation
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
-// Created by Kaustubh Patange at 02-02-2021
-// Modified by Dev Atrii at 23-07-2023
 
-/**
- * Usage: ```SpringScrollHelper().attachToRecyclerView(recyclerView)```
- */
 
 class SpringScrollHelper {
-    /**
-     * Adds a snappy spring effect to recyclerView.
-     *
-     * Passing null will remove it.
-     */
+
 
     fun attachToRecyclerView(recyclerView: RecyclerView?) {
         if (recyclerView != null) {

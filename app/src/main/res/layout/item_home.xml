@@ -6,18 +6,16 @@
     android:layout_height="wrap_content">
 
 
-
-
     <TextView
         android:id="@+id/mCategoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Self Developments"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:fontFamily="@font/roboto_bold"
         app:layout_constraintBottom_toBottomOf="@+id/mSeeAllBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/mSeeAllBtn" />
@@ -35,9 +33,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mChildRvBooks"
         android:layout_width="match_parent"
-        android:transitionName="rvAnim"
         android:layout_height="match_parent"
         android:orientation="horizontal"
+        android:transitionName="rvAnim"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

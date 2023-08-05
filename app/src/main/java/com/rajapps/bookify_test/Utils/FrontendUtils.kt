@@ -24,12 +24,13 @@ fun View.fadeView(
     startAnimation(anim)
 }
 
-fun View.removeWithAnim(){
-    fadeView(from=1f,to=0f, duration = 500)
+fun View.removeWithAnim() {
+    fadeView(from = 1f, to = 0f, duration = 500)
     visibility = View.GONE
 
 }
-fun View.showWithAnim(){
+
+fun View.showWithAnim() {
     fadeView(duration = 500)
     visibility = View.VISIBLE
 

@@ -2,16 +2,13 @@ package com.rajapps.bookify_test.Activity
 
 import android.app.ActionBar
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.AsyncTask
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
@@ -35,8 +32,9 @@ class DetailsActivity : AppCompatActivity() {
     lateinit var binding: ActivityDetailsBinding
 
     private var mInterstitialAd: InterstitialAd? = null // interstetial ad
-    private var adUnitId = "ca-app-pub-3940256099942544/1033173712" // interstetial ad unit id
-    private val adDisplayInterval: Long =   4 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
+    private var adUnitId = "ca-app-pub-5815431236783085/3002346200" // interstetial ad unit id
+    private val adDisplayInterval: Long =
+        8 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
 
     private val repo = BookRepo(activity)
     private val viewModel by lazy {
@@ -55,7 +53,6 @@ class DetailsActivity : AppCompatActivity() {
 
         loadInterstitialAd() // interstetial ad
         showAdTime() //show ad in every   minutes
-
 
 
         val bookModel = intent.getSerializableExtra("book_model") as BooksModel
@@ -128,10 +125,7 @@ class DetailsActivity : AppCompatActivity() {
     } // functions,,,,,,,,,,,,,,,,,,,,,,,,,
 
 
-
-
-
-    private fun showAdTime(){
+    private fun showAdTime() {
         val timer = Timer()
         val adDisplayTask = object : TimerTask() {
             override fun run() {
@@ -154,11 +148,12 @@ class DetailsActivity : AppCompatActivity() {
 
         // interstetial ads ca-app-pub-3940256099942544/1033173712
         var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,adUnitId, adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
 
                 mInterstitialAd = null
             }
+
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
 
                 mInterstitialAd = interstitialAd

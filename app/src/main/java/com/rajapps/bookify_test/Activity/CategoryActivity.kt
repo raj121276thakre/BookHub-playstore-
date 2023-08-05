@@ -21,8 +21,9 @@ class CategoryActivity : AppCompatActivity() {
 
     //toolbar category
 
-    lateinit var coordinatorLayout : CoordinatorLayout
-    lateinit var toolbar : Toolbar
+    lateinit var coordinatorLayout: CoordinatorLayout
+    lateinit var toolbar: Toolbar
+
     //toolbar category
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +35,6 @@ class CategoryActivity : AppCompatActivity() {
         coordinatorLayout = findViewById(R.id.coordinatorLayout)
         toolbar = findViewById(R.id.toolbar)
 
-
         // toolbar category
 
         binding.apply {
@@ -42,7 +42,7 @@ class CategoryActivity : AppCompatActivity() {
             SpringScrollHelper().attachToRecyclerView(mRvCategory)
             val bookList = intent.getSerializableExtra("book_list") as ArrayList<BooksModel>
             //2
-            val   catTitle = intent.getStringExtra("toolbar_tilte")as String
+            val catTitle = intent.getStringExtra("toolbar_tilte") as String
             //supportActionBar?.title = catTitle
             setUpToolbar(catTitle)
 
@@ -52,13 +52,12 @@ class CategoryActivity : AppCompatActivity() {
         }
 
 
-
     }// functions below
 
     //toolbar
-    fun setUpToolbar( Title : String){
+    fun setUpToolbar(Title: String) {
         setSupportActionBar(toolbar)
-        supportActionBar?.title=Title
+        supportActionBar?.title = Title
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 

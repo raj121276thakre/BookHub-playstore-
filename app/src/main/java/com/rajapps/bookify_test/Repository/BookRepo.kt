@@ -16,14 +16,15 @@ class BookRepo(val context: Context) {
     private val downloadLd = MutableLiveData<MyResponses<DownloadModel>>()
     val downloadLiveData get() = downloadLd
     val TAG = "Details_Activity"
+
     @SuppressLint("Range")
     suspend fun downloadPdf(url: String, fileName: String) {
-        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS),fileName)
+        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), fileName)
         Log.i(TAG, "downloadPdf: ${file.absolutePath}")
-        if (file.exists()){
+        if (file.exists()) {
             val model = DownloadModel(
                 progress = 100,
-                isDownloaded =true ,
+                isDownloaded = true,
                 downloadId = -1,
                 filePath = file.toURI().toString()
             )

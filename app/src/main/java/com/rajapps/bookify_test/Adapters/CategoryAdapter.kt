@@ -26,14 +26,14 @@ class CategoryAdapter(val list: ArrayList<BooksModel>, val context: Context) :
                 mBookDesc.text = model.description
                 binding.root.setOnClickListener {
                     Intent().apply {
-                        putExtra("book_model",model)
+                        putExtra("book_model", model)
                         setClass(context, DetailsActivity::class.java)
                         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                             context as Activity,
                             materialCardView,
                             materialCardView.transitionName
                         )
-                        context.startActivity(this,options.toBundle())
+                        context.startActivity(this, options.toBundle())
                     }
                 }
             }

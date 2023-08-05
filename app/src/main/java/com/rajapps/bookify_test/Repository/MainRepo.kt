@@ -20,7 +20,7 @@ class MainRepo(val context: Context) {
 
     suspend fun getHomeData() {
         homeLiveData.postValue(MyResponses.Loading())
-         val TAG = "MainActivity"
+        val TAG = "MainActivity"
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshots: DataSnapshot) {
                 Log.i(TAG, "onDataChange: Value Changed")

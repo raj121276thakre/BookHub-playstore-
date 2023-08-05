@@ -17,4 +17,9 @@
         <item name="fontFamily">@font/roboto</item>
     </style>
 
+<!--menu item text size-->
+    <style name="CustomMenuItemText">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

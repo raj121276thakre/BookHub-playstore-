@@ -8,4 +8,4 @@ data class BooksModel(
     val description: String = "",
     val author: String = "",
     val bookPDF: String = "",
-):Serializable
+) : Serializable

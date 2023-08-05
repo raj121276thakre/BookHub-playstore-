@@ -29,7 +29,7 @@ class HomeChildAdapter(val list: ArrayList<BooksModel>, val context: Context) :
                                 cardView,
                                 cardView.transitionName
                             )
-                            context.startActivity(this,options.toBundle())
+                            context.startActivity(this, options.toBundle())
                         }
                     }
                 }

@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:background="@color/white"
-    app:cardElevation="5dp"
+    app:cardCornerRadius="6dp"
 
-    app:cardCornerRadius="6dp">
+    app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,14 +20,13 @@
             android:layout_height="150dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:transitionName="BookTrans"
             android:layout_marginBottom="8dp"
+            android:transitionName="BookTrans"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            app:strokeColor="@color/black"
-            >
+            app:strokeColor="@color/black">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -46,7 +45,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.5"
-                    app:srcCompat="@drawable/book_4" />
+                    app:srcCompat="@drawable/book_2" />
 
                 <View
                     android:id="@+id/view"
@@ -67,16 +66,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
+            android:padding="4dp"
             android:text="How to be Fine\nThink Good"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:padding="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toEndOf="@+id/materialCardView"
             app:layout_constraintTop_toTopOf="@+id/materialCardView" />
-
 
 
         <TextView
@@ -111,25 +109,24 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
 </androidx.cardview.widget.CardView>
 
 
-<!--
-add to favourite
- <TextView
-            android:id="@+id/txtFavorite"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_favourite_red"
+    <!--
+    add to favourite
+     <TextView
+                android:id="@+id/txtFavorite"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ic_favourite_red"
 
-            android:tag="unliked"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.619"
-            app:layout_constraintStart_toEndOf="@+id/mBookTitle"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.183" />
--->
+                android:tag="unliked"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.619"
+                app:layout_constraintStart_toEndOf="@+id/mBookTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.183" />
+    -->
