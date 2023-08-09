@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.rajapps.bookify_test.Activity.DetailsActivity
 import com.rajapps.bookify_test.Models.BooksModel
 import com.rajapps.bookify_test.Utils.loadOnline
@@ -26,6 +27,7 @@ class CategoryAdapter(val list: ArrayList<BooksModel>, val context: Context) :
                 mBookDesc.text = model.description
                 binding.root.setOnClickListener {
                     Intent().apply {
+
                         putExtra("book_model", model)
                         setClass(context, DetailsActivity::class.java)
                         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(

@@ -16,10 +16,7 @@ import java.util.TimerTask
 class PdfActivity : AppCompatActivity() {
     val activity = this
 
-    private var mInterstitialAd: InterstitialAd? = null // interstetial ad
-    private var adUnitId = "ca-app-pub-5815431236783085/8163490774" // interstetial ad unit id
-    private val adDisplayInterval: Long =
-        10 * 60 * 1000 // 4 minutes in milliseconds Long = 1 * 60 * 1000
+
 
 
     lateinit var binding: ActivityPdfBinding
@@ -31,8 +28,7 @@ class PdfActivity : AppCompatActivity() {
 
 
 
-        loadInterstitialAd() // interstetial ad
-        showAdTime() //show ad in every   minutes
+
 
 
         supportActionBar?.hide()
@@ -51,42 +47,8 @@ class PdfActivity : AppCompatActivity() {
     }
 
 
-    private fun showAdTime() {
-        val timer = Timer()
-        val adDisplayTask = object : TimerTask() {
-            override fun run() {
-                runOnUiThread {
-                    if (mInterstitialAd != null) {
-                        mInterstitialAd?.show(activity)
-                    } else {
-                        // The interstitial ad was not loaded yet, you may want to handle this case.
-                        Log.d("TAG", "The interstitial ad wasn't ready yet.")
-                    }
-                    loadInterstitialAd() // Load a new ad for the next display
-                }
-            }
-        }
 
-        timer.schedule(adDisplayTask, adDisplayInterval, adDisplayInterval)
-    }
 
-    private fun loadInterstitialAd() {
-
-        // interstetial ads ca-app-pub-3940256099942544/1033173712
-        var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-
-                mInterstitialAd = interstitialAd
-            }
-        }) // interstetial ad //
-
-    }
 
 
 }

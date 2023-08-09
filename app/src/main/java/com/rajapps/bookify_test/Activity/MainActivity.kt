@@ -49,10 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private var mInterstitialAd: InterstitialAd? = null // interstetial ad
-    private var adUnitId = "ca-app-pub-5815431236783085/2647122985" // interstetial ad unit id
-    private val adDisplayInterval: Long =
-        5 * 60 * 1000 //  minutes in milliseconds Long = 1 * 60 * 1000
+
 
 
     // navigation
@@ -71,8 +68,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        loadInterstitialAd() // interstetial ad
-        showAdTime() //show ad in every   minutes
+
 
 
 // navigation
@@ -197,42 +193,9 @@ class MainActivity : AppCompatActivity() {
     }// functions defined below............................
 
 
-    private fun showAdTime() {
-        val timer = Timer()
-        val adDisplayTask = object : TimerTask() {
-            override fun run() {
-                runOnUiThread {
-                    if (mInterstitialAd != null) {
-                        mInterstitialAd?.show(activity)
-                    } else {
-                        // The interstitial ad was not loaded yet, you may want to handle this case.
-                        Log.d("TAG", "The interstitial ad wasn't ready yet.")
-                    }
-                    loadInterstitialAd() // Load a new ad for the next display
-                }
-            }
-        }
 
-        timer.schedule(adDisplayTask, adDisplayInterval, adDisplayInterval)
-    }
 
-    private fun loadInterstitialAd() {
 
-        // interstetial ads ca-app-pub-3940256099942544/1033173712
-        var adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, adUnitId, adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-
-                mInterstitialAd = interstitialAd
-            }
-        }) // interstetial ad //
-
-    }
 
     private fun handleHomeBackend() {
         viewModel.homeLiveData.observe(activity) {

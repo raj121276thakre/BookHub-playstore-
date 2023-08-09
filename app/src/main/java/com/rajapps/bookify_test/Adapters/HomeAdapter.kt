@@ -3,10 +3,15 @@ package com.rajapps.bookify_test.Adapters
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.rajapps.bookify_test.Activity.CategoryActivity
 import com.rajapps.bookify_test.Activity.DetailsActivity
 import com.rajapps.bookify_test.Models.BooksModel
@@ -31,6 +36,8 @@ class HomeAdapter(val list: ArrayList<HomeModel>, val context: Context) :
                     mCategoryTitle.text = catTitle
 
                     mSeeAllBtn.setOnClickListener {
+
+
                         // handle here
                         val intent = Intent()
                         intent.putExtra("book_list", booksList)
@@ -133,4 +140,8 @@ class HomeAdapter(val list: ArrayList<HomeModel>, val context: Context) :
             }
         }
     }
+
+
+
+
 }
