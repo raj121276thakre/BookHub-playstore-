@@ -9,7 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.FrameLayout
-import android.widget.TextView
+
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -19,9 +19,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.material.navigation.NavigationView
+import com.google.android.play.core.review.ReviewManager
+import com.google.android.play.core.review.ReviewManagerFactory
 import com.rajapps.bookify_test.Adapters.HomeAdapter
 import com.rajapps.bookify_test.Models.HomeModel
 import com.rajapps.bookify_test.R
@@ -33,8 +34,6 @@ import com.rajapps.bookify_test.Utils.showWithAnim
 import com.rajapps.bookify_test.ViewModels.MainViewModel
 import com.rajapps.bookify_test.ViewModels.MainViewModelFactory
 import com.rajapps.bookify_test.databinding.ActivityMainBinding
-import java.util.Timer
-import java.util.TimerTask
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,9 +48,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
-
     // navigation
     lateinit var drawerLayout: DrawerLayout
     lateinit var coordinatorLayout: CoordinatorLayout
@@ -62,14 +58,18 @@ class MainActivity : AppCompatActivity() {
     // navigation
 
 
+    // admob open ad
+    private var mAppOpenAd: AppOpenAd? = null
+    private var isShowingAd = false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-
+        // in app review
+        showReview()
 
 // navigation
         drawerLayout = findViewById(R.id.drawerLayout)
@@ -92,9 +92,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
-
         navigationview.setNavigationItemSelectedListener {
 
             if (previousMenuItem != null) {
@@ -111,7 +108,8 @@ class MainActivity : AppCompatActivity() {
                     //code
 
                     val appPackageName = packageName // Get your app's package name
-                    val playStoreLink = "https://play.google.com/store/apps/details?id=$appPackageName"
+                    val playStoreLink =
+                        "https://play.google.com/store/apps/details?id=$appPackageName"
                     val shareIntent = Intent(Intent.ACTION_SEND)
                     shareIntent.type = "text/plain"
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Check out this awesome app!")
@@ -125,7 +123,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.rateUs -> {
 
-                     val appPackageName = packageName // Get your app's package name
+                    val appPackageName = packageName // Get your app's package name
 
                     try {
                         // Open the Play Store page of your app
@@ -190,11 +188,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-    }// functions defined below............................
-
-
-
-
+    }// functions defined below...........................................................
 
 
     private fun handleHomeBackend() {
@@ -251,6 +245,49 @@ class MainActivity : AppCompatActivity() {
     }
 
     //navigation
+
+    // in app review
+
+    private fun showReview(){
+        val manager = ReviewManagerFactory.create(applicationContext)
+        manager.requestReviewFlow().addOnCompleteListener {
+            if (it.isSuccessful){
+                manager.launchReviewFlow(this, it.result)
+            }
+        }
+    }
+
+
+
+    // open ads
+    private fun showOpenAd() {
+        val adRequest = AdRequest.Builder().build()
+        AppOpenAd.load(this, "ca-app-pub-5815431236783085/1042283303",
+            adRequest,
+            AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT,
+            object : AppOpenAd.AppOpenAdLoadCallback() {
+                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                    super.onAdFailedToLoad(loadAdError)
+                }
+
+                override fun onAdLoaded(appOpenAd: AppOpenAd) {
+                    super.onAdLoaded(appOpenAd)
+                    mAppOpenAd = appOpenAd
+                    if (!isShowingAd) {
+                        mAppOpenAd!!.show(this@MainActivity)
+                        isShowingAd = true
+                    }
+                }
+            })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!isShowingAd) {
+            showOpenAd()
+        }
+    }
+
 
 
 }
